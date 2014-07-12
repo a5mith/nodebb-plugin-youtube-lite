@@ -9,8 +9,8 @@
 	],
 	"staticDirs": {
         "css": "./static"
-    }
-		"scripts": [
-				"static/lib/lazyYT.js"
-		]
+    },
+	"scripts": [
+		"static/lib/lazyYT.js"
+	]
 }
