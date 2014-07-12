@@ -9,9 +9,6 @@
         var	regularUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)(.+)">.+<\/a>/g;
         var	shortUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtu\.be)\/(.+)">.+<\/a>/g;
 
-        if (postContent.match(embedUrl)) {
-            postContent = postContent.replace(embedUrl, embed);
-        }
         if (postContent.match(regularUrl)) {
             postContent = postContent.replace(regularUrl, embed);
         }
