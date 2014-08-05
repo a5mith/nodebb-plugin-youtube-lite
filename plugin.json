@@ -11,6 +11,7 @@
         "css": "./static"
     },
 	"scripts": [
-		"static/lib/lazyYT.js"
+		"static/lib/lazyYT.js",
+        "static/lib/main.js"
 	]
 }
