@@ -41,7 +41,7 @@
         $el.on('click', function (e) {
             e.preventDefault();
             if (!$el.hasClass('lazyYT-video-loaded') && $el.hasClass('lazyYT-image-loaded')) {
-                $el.html('<iframe class="lazytube" src="//www.youtube.com/embed/' + id + '"></iframe>')
+                $el.html('<iframe class="lazytube" src="//www.youtube.com/embed/' + id + '?autoplay=1"></iframe>')
                     .removeClass('lazyYT-image-loaded')
                     .addClass('lazyYT-video-loaded');
             }
