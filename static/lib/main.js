@@ -4,7 +4,7 @@
         $('.js-lazyYT').lazyYT();
     });
 
-    $(window).on('action:topics.post', function() {
+    $(window).on('action:posts.reply', function() {
         $('.js-lazyYT').lazyYT();
     });
 
