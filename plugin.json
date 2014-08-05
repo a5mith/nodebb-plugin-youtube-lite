@@ -8,9 +8,12 @@
 		{ "hook": "filter:post.parse", "method": "parse", "callbacked": true }
 	],
 	"staticDirs": {
-        "css": "static/"
+        "static": "./static"
     },
-	"scripts": [
+    "less": [
+        "static/style.less"
+    ],
+    "scripts": [
 		"static/lib/lazyYT.js",
         "static/lib/main.js"
 	]
