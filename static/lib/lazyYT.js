@@ -43,7 +43,7 @@
             if (!$el.hasClass('lazyYT-video-loaded') && $el.hasClass('lazyYT-image-loaded')) {
                 $el.html('<iframe class="lazytube" src="//www.youtube.com/embed/' + id + '?autoplay=1"></iframe>')
                     .removeClass('lazyYT-image-loaded')
-                    .removeClass('js-LazyYT')
+                    .removeClass('js-lazyYT')
                     .addClass('lazyYT-video-loaded');
             }
         });
