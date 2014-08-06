@@ -6,7 +6,7 @@
     });
 
 
-    $(window).on('action:composer.posts.reply', function() {
+    $(window).on('action:ajaxify.end', function() {
         $('.js-lazyYT').lazyYT();
-        console.log('New Post')
+        console.log('Ajax End')
     });
