@@ -4,7 +4,7 @@
         $('.js-lazyYT').lazyYT();
     });
 
-    $(window).on('action:composer.topics.post.', function() {
+    $(window).trigger('action:composer.topics.post.', function() {
         $('.js-lazyYT').lazyYT();
         console.log('lazyYT: fired');
     });
