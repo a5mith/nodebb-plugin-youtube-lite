@@ -5,6 +5,6 @@
     });
 
 
-        $(window).trigger('action:ajaxify.end', function() {
+        $(window).trigger('action:composer.topics.post', function() {
         $('.js-lazyYT').lazyYT();
     });
