@@ -7,4 +7,4 @@
 
     $(window).on('action:posts.loaded', function(){
         $('.js-lazyYT').lazyYT();
-    });
+    }, 1000);
