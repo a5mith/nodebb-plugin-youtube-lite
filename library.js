@@ -6,7 +6,7 @@
 
 
     YoutubeLite.parse = function(postContent, callback) {
-        var	regularUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)">.+<\/a>/g;
+        var	regularUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*">.+<\/a>/g;
         var	shortUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtu\.be)\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*">.+<\/a>/g;
         var	embedUrl = /<a href="(?:https?:\/\/)?(?:www\.)youtube.com\/embed\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*">.+<\/a>/;
 
