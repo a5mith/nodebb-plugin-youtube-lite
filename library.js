@@ -6,15 +6,14 @@
 
 
     YoutubeLite.parse = function(postContent, callback) {
-        var	regularUrl = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*/g;
-        var	shortUrl = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be)\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*/g;
-        var	embedUrl = /(?:https?:\/\/)?(?:www\.)youtube.com\/embed\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*/;
+        var	regularUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)">.+<\/a>/g;
+        var	shortUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtu\.be)\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*">.+<\/a>/g;
+        var	embedUrl = /<a href="(?:https?:\/\/)?(?:www\.)youtube.com\/embed\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*">.+<\/a>/;
 
         if (postContent.match(embedUrl)) {
             postContent = postContent.replace(embedUrl, embed);
         }
         if (postContent.match(regularUrl)) {
-            console.log('Converting youtube URL', callback, postContent)
             postContent = postContent.replace(regularUrl, embed);
         }
         if (postContent.match(shortUrl)) {
