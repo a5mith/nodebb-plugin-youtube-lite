@@ -9,7 +9,6 @@
         var	regularUrl = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*/g;
         var	shortUrl = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be)\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*/g;
         var	embedUrl = /(?:https?:\/\/)?(?:www\.)youtube.com\/embed\/((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*/;
-        var mobileUrl = /(?:https?:\/\/)?(?:m\.)?(?:youtube\.com)\/(?:watch\?v=)((?:[\w\-_]+){11})\??([^&]+)?(&?[\w&=]+)*/g;
 
         if (postContent.match(embedUrl)) {
             postContent = postContent.replace(embedUrl, embed);
@@ -19,9 +18,6 @@
         }
         if (postContent.match(shortUrl)) {
             postContent = postContent.replace(shortUrl, embed);
-        }
-        if (postContent.match(mobileUrl)) {
-            postContent = postContent.replace(mobileUrl, embed);
         }
 
         callback(null, postContent);
