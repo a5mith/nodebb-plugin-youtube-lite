@@ -14,6 +14,7 @@
             postContent = postContent.replace(embedUrl, embed);
         }
         if (postContent.match(regularUrl)) {
+            console.log('Converting youtube URL', callback, postContent)
             postContent = postContent.replace(regularUrl, embed);
         }
         if (postContent.match(shortUrl)) {
