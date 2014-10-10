@@ -12,8 +12,7 @@
             ratio = $el.data('ratio'),
             id = $el.data('youtube-id'),
             aspectRatio = ['16', '9'],
-            paddingTop = 0,
-            youtubeParameters = $el.data('parameters') || '';
+            paddingTop = 0;
 
         if (typeof width === 'undefined' || typeof height === 'undefined') {
           height = 0;
