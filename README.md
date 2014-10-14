@@ -10,8 +10,9 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 
 ##Changes
-    0.1.2:
+    0.1.3:
      - Added support for ref="nofollow" (If you're on a version of NodeBB lower than 0.5.2, you will need to remove ref="nofollow" from library.js)
+     - Fixed issue that caused only one video per post to be rendered. 
 
     0.1.1:
      - Better handling of Regex
