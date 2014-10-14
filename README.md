@@ -10,6 +10,9 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 
 ##Changes
+    0.1.2:
+     - Added support for ref="nofollow" (If you're on a version of NodeBB lower than 0.5.2, you will need to remove ref="nofollow" from library.js)
+
     0.1.1:
      - Better handling of Regex
-     - Fallback for Composer so Youtube Video embeds as soon as you post it. 
+     - Fallback for Composer so Youtube Video embeds as soon as you post it.
