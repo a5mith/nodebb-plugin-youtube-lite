@@ -5,7 +5,7 @@
 	"url": "https://github.com/a5mith/nodebb-plugin-youtube-lite",
 	"library": "./library.js",
 	"hooks": [
-        { "hook": "filter:post.parse", "method": "parse", "priority": 6 }	],
+        { "hook": "filter:post.parse", "method": "parse", "priority": 3 }	],
 	"staticDirs": {
         "static": "./static"
     },
