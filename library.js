@@ -8,7 +8,7 @@
     YoutubeLite.parse = function(postContent, callback) {
         var	regularUrl = /<a rel="nofollow" href="(?:https?:\/\/)?(?:www\.)?(?:youtube\.com)\/(?:watch\?v=)((.+){11})">.+<\/a>/gm;
         var	shortUrl = /<a rel="nofollow" href="(?:https?:\/\/)?(?:www\.)?(?:youtu\.be)\/((.+){11})">.+<\/a>/gm;
-        var	embedUrl = /<a rel="nofollow" href="(?:https?:\/\/)?(?:www\.)youtube.com\/embed\/(([\w\-_]+){11})">.+<\/a>/;
+        var	embedUrl = /<a rel="nofollow" href="(?:https?:\/\/)?(?:www\.)youtube.com\/embed\/([\w\-_]+)">.+<\/a>/;
 
         if (postContent.match(embedUrl)) {
             postContent = postContent.replace(embedUrl, embed);
