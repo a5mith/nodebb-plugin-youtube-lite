@@ -2,7 +2,7 @@
 	"use strict";
 
 	var YoutubeLite = {},
-		embed = '<div class="js-lazyYT" data-youtube-id="$1" data-width="640" data-height="360">Youtube Embed...</div>';
+		embed = '<div class="js-lazyYT" data-youtube-id="$1" data-width="640" data-height="360"><iframe class="lazytube-$1" src="//www.youtube.com/embed/$1"></iframe></div>';
 
 
     YoutubeLite.parse = function(postContent, callback) {
