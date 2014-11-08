@@ -8,18 +8,21 @@
         var	shortUrl = /<a href="(?:https?:\/\/)?(?:www\.)?(?:youtu\.be)\/(.+)">.+<\/a>/g;
         var	embedUrl = /<a href="(?:https?:\/\/)?(?:www\.)youtube.com\/embed\/([\w\-_]+)">.+<\/a>/;
 
-    YoutubeLite.parse = function(postContent, callback) {
-        if (postContent.match(embedUrl)) {
-            postContent = postContent.replace(embedUrl, embed);
+    YoutubeLite.parse = function(data, callback) {
+        if (!data || !data.postData || !data.postData.content) {
+            return callback(null, data);
         }
-        if (postContent.match(regularUrl)) {
-            postContent = postContent.replace(regularUrl, embed);
+        if (data.postData.content.match(embedUrl)) {
+            data.postData.content = data.postData.content.replace(embedUrl, embed);
         }
-        if (postContent.match(shortUrl)) {
-            postContent = postContent.replace(shortUrl, embed);
+        if (data.postData.content.match(regularUrl)) {
+            data.postData.content = data.postData.content.replace(regularUrl, embed);
         }
+        if (data.postData.content.match(shortUrl)) {
+            data.postData.content = data.postData.content.replace(shortUrl, embed);
+        }
+        callback(null, data);
 
-        callback(null, postContent);
     };
 
 	module.exports = YoutubeLite;
