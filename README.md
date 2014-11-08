@@ -10,8 +10,11 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 
 ##Changes
+    0.2.2
+     - Use this version for 0.6.x and up.
+
     0.2.1
-     - Compatibility for NodeBB 0.6.0 
+     - Use this version for NodeBB 0.5.x.
 
     0.1.3:
      - Added support for ref="nofollow" (If you're on a version of NodeBB lower than 0.5.2, you will need to remove ref="nofollow" from library.js)
