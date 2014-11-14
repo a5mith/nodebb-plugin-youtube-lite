@@ -27,14 +27,14 @@
             'height': height,
             'width': width,
             'padding-top': paddingTop,
-            'background': 'url(http://img.youtube.com/vi/' + id + '/hqdefault.jpg) center center no-repeat',
+            'background': 'url(//img.youtube.com/vi/' + id + '/hqdefault.jpg) center center no-repeat',
             'cursor': 'pointer',
             'background-size': 'cover'
         })
             .html('<p id="lazyYT-title-' + id + '" class="lazyYT-title"></p><div class="lazyYT-button"></div>')
             .addClass('lazyYT-image-loaded');
 
-        $.getJSON('https://gdata.youtube.com/feeds/api/videos/' + id + '?v=2&alt=json', function (data) {
+        $.getJSON('//gdata.youtube.com/feeds/api/videos/' + id + '?v=2&alt=json', function (data) {
             $('#lazyYT-title-' + id).text(data.entry.title.$t);
         });
 
@@ -58,3 +58,4 @@
     };
 
 }(jQuery));
+h
