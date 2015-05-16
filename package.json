@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-youtube-lite",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "nbbpm": {
         "compatibility": "^0.6.0"
   },
@@ -31,6 +31,6 @@
   },
   "readme": "",
   "readmeFilename": "README.md",
-  "_id": "nodebb-plugin-youtube-lite@0.3.2",
-  "_from": "nodebb-plugin-youtube-lite@~0.3.2"
+  "_id": "nodebb-plugin-youtube-lite@0.3.3",
+  "_from": "nodebb-plugin-youtube-lite@~0.3.3"
 }
