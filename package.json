@@ -1,8 +1,8 @@
 {
   "name": "nodebb-plugin-youtube-lite",
-  "version": "0.3.3",
+  "version": "0.3.2",
   "nbbpm": {
-        "compatibility": "^0.6.0"
+    "compatibility": "^0.6.0"
   },
   "description": "NodeBB Youtube Lite Plugin",
   "main": "library.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/a5mith/nodebb-plugin-youtube-lite"
+    "url": "git+https://github.com/a5mith/nodebb-plugin-youtube-lite.git"
   },
   "keywords": [
     "nodebb",
@@ -29,8 +29,27 @@
   "bugs": {
     "url": "https://github.com/a5mith/nodebb-plugin-youtube-lite/issues"
   },
-  "readme": "",
-  "readmeFilename": "README.md",
-  "_id": "nodebb-plugin-youtube-lite@0.3.3",
-  "_from": "nodebb-plugin-youtube-lite@~0.3.3"
+  "_id": "nodebb-plugin-youtube-lite@0.3.2",
+  "_from": "nodebb-plugin-youtube-lite@latest",
+  "gitHead": "f7c1051a18190da1cca05abeefdb737860e2fef0",
+  "homepage": "https://github.com/a5mith/nodebb-plugin-youtube-lite",
+  "_shasum": "371f8e63b97feca6cf5baf7389ef3a129d372507",
+  "_npmVersion": "1.4.14",
+  "_npmUser": {
+    "name": "aaron.smith",
+    "email": "35hzcommunity@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "aaron.smith",
+      "email": "35hzcommunity@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "371f8e63b97feca6cf5baf7389ef3a129d372507",
+    "tarball": "http://registry.npmjs.org/nodebb-plugin-youtube-lite/-/nodebb-plugin-youtube-lite-0.3.2.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/nodebb-plugin-youtube-lite/-/nodebb-plugin-youtube-lite-0.3.2.tgz",
+  "readme": "ERROR: No README data found!"
 }

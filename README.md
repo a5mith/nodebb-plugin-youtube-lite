@@ -10,8 +10,6 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 
 ##Changes
-    0.3.2
-     - Bug Fixes
     0.3.1
      - Removed forced http from api and pre loaded image. 
     0.2.2

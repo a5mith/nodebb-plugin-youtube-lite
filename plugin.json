@@ -1,20 +1,19 @@
 {
-    "id": "nodebb-plugin-youtube-lite",
-    "name": "NodeBB Youtube Lite",
-    "description": "NodeBB Plugin that allows users to Lazyload Youtube Videos inline in their posts.",
-    "url": "https://github.com/a5mith/nodebb-plugin-youtube-lite",
-    "library": "./library.js",
-    "hooks": [
-        { "hook": "action:markdown.updateParserRules", "method": "updateParser" }
-    ],
-    "staticDirs": {
+	"id": "nodebb-plugin-youtube-lite",
+	"name": "NodeBB Youtube Lite",
+	"description": "NodeBB Plugin that allows users to Lazyload Youtube Videos inline in their posts.",
+	"url": "https://github.com/a5mith/nodebb-plugin-youtube-lite",
+	"library": "./library.js",
+	"hooks": [
+        { "hook": "filter:parse.post", "method": "parse", "callbacked": true }	],
+	"staticDirs": {
         "static": "./static"
     },
     "less": [
         "static/style.less"
     ],
     "scripts": [
-        "static/lib/lazyYT.js",
+		"static/lib/lazyYT.js",
         "static/lib/main.js"
-    ]
+	]
 }
