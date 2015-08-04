@@ -4,7 +4,7 @@
 	var YoutubeLite = {},
 		embed = '<div class="js-lazyYT" data-youtube-id="$1" data-width="640" data-height="360"><iframe class="lazytube" src="//www.youtube.com/embed/$1"></iframe></div>';
 
-	    var	regularUrl = /<a href="http.?:.*(youtube.com|.*be\/|.*embed\/|watch\?.*v=|(\w{11})).*?<\/a>/g;
+	    var	regularUrl = /<a href="https?:\/\/(?:[^\/]+\.)?(?:youtube\.com|youtu\.be)\/(?:watch)?(?:\?v=)?([^&]+)[^"]*"[^<]*<\/a>/g;
         
     YoutubeLite.parse = function(data, callback) {
         if (!data || !data.postData || !data.postData.content) {
