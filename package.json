@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-youtube-lite",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "nbbpm": {
     "compatibility": "^0.7.0"
   },
@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/a5mith/nodebb-plugin-youtube-lite/issues"
   },
-  "_id": "nodebb-plugin-youtube-lite@0.4.1",
+  "_id": "nodebb-plugin-youtube-lite@0.4.3",
   "_npmUser": {
     "name": "aaron.smith",
     "email": "35hzcommunity@gmail.com"
