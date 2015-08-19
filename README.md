@@ -10,6 +10,8 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 
 ##Changes
+	0.4.2
+	 - Upgraded Regex so it doesn't match ANY 11 character string. 
     0.4.1
      - Works with latest 0.7.x and hopefully beyond. Should also support time stamps. 
     0.3.1
