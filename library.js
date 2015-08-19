@@ -2,7 +2,7 @@
 	"use strict";
 
 	var YoutubeLite = {},
-		embed = '<div class="js-lazyYT" data-youtube-id="$3" data-width="640" data-height="360"><iframe class="lazytube" src="//www.youtube.com/embed/$1"></iframe></div>';
+		embed = '<div class="js-lazyYT" data-youtube-id="$3" data-width="640" data-height="360"><iframe class="lazytube" src="//www.youtube.com/embed/$3"></iframe></div>';
 
 	    var	regularUrl = /<a href="((https?:\/\/www\.)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|https?\:\/\/youtu\.be\/)([a-zA-Z0-9]{6,11})">.+<\/a>/g;
         
