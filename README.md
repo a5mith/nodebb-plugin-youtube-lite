@@ -10,7 +10,7 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 
 ##Changes
-	0.4.3
+	0.4.4
 	 - Upgraded Regex so it doesn't match ANY 11 character string. Includes support for rel="nofollow". 
     0.4.1
      - Works with latest 0.7.x and hopefully beyond. Should also support time stamps. 
