@@ -11,23 +11,10 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 ##Changes
     0.4.5
-     - Responsive on all devices.  
+     - Fixed how the video displays on mobiles. Should no longer extend past the viewport.
     0.4.4
      - Upgraded Regex so it doesn't match ANY 11 character string. Includes support for rel="nofollow". 
     0.4.1
      - Works with latest 0.7.x and hopefully beyond. Should also support time stamps. 
     0.3.1
      - Removed forced http from api and pre loaded image. 
-    0.2.2
-     - Use this version for 0.6.x and up.
-
-    0.2.1
-     - Use this version for NodeBB 0.5.x.
-
-    0.1.3:
-     - Added support for ref="nofollow" (If you're on a version of NodeBB lower than 0.5.2, you will need to remove ref="nofollow" from library.js)
-     - Fixed issue that caused only one video per post to be rendered.
-
-    0.1.1:
-     - Better handling of Regex
-     - Fallback for Composer so Youtube Video embeds as soon as you post it.
