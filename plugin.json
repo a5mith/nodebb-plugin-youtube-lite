@@ -10,8 +10,8 @@
         "static": "./static"
     },
     "less": [
--        "static/style.less"
--    ],
+        "static/style.less"
+    ],
     "scripts": [
 		"static/lib/lazyYT.js",
         "static/lib/main.js"
