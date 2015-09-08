@@ -10,7 +10,7 @@ Saving precious time when loading long, youtube heavy topics. A preview image is
 
 
 ##Changes
-    0.4.6
+    0.4.7
      - Changes to Desktop Video Size
     0.4.5
      - Fixed how the video displays on mobiles. Should no longer extend past the viewport.
