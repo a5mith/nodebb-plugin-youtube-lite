@@ -28,6 +28,5 @@
         callback(null, data);
 
     };
-
 	module.exports = YoutubeLite;
 }(module));
