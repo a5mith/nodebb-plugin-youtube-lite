@@ -1,12 +1,14 @@
 iframe.lazytube {
-border: 0;
+  border: 0;
 }
+
 @media(min-width: 768px){
-        iframe.lazytube {
-        height: calc(59vh / 1.5);
-       width: calc(47vh * 1.5);
-        }
+  iframe.lazytube {
+    height: calc(59vh / 1.5);
+    width: calc(47vh * 1.5);
+  }
 }
+
 .lazyYT-container {
   direction:ltr;
   position: relative;
@@ -14,7 +16,7 @@ border: 0;
   height: 0;
   padding: 0 0 56.25% 0;
   overflow: hidden;
-  background-color: #000000;
+  background-color: @body-bg;
 }
 
 .lazyYT-container iframe {
