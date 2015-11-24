@@ -6,8 +6,10 @@
 	"library": "./library.js",
 	"hooks": [
         { "hook": "filter:parse.post", "method": "parse"},
-		{ "hook": "filter:admin.header.build", "method": "admin.menu"},
-        { "hook": "static:app.load", "method": "init" }		],
+		{ "hook": "filter:admin.header.build", "method": "addMenuItem"},
+        { "hook": "static:app.load", "method": "init" }		
+		
+	],	
 	"staticDirs": {
         "static": "./static"
     },

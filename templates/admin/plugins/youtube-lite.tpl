@@ -1,24 +1,32 @@
-<div class="row">
+<div class="row youtube-lite">
 	<div class="col-lg-9">
 		<div class="panel panel-default">
-			<div class="panel-heading">Youtube Lite</div>
+			<div class="panel-heading"><i class="fa fa-youtube"></i>Youtube Lite</div>
 			<div class="panel-body">
-				<form class="form">
-	<div class="row">
-		<div class="col-sm-6 col-xs-12">
-			<div class="form-group">
-				<label>Youtube API Key</label>
-				<input id="youtubeAPIKey" type="text" class="form-control" placeholder="Enter Youtube API Key" value="{settings.youtubeAPIKey}">
-			</div>
-		</div>
-	</div>
-</form>
+				<p class="lead">
+					Lazyload YouTube videos on your NodeBB forum with just the URL.
+				</p>
+
+				<div class="row">
+					<div class="col-sm-6 well">
+						<form class="form youtube-lite-settings">
+							<div class="form-group">
+								<label for="id">Client ID</label>
+								<input type="text" class="form-control" id="id" name="id" />
+							</div>
+							<div class="form-group">
+								<label for="secret">Client Secret</label>
+								<input type="text" class="form-control" id="secret" name="secret" />
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-lg-3">
 		<div class="panel panel-default">
-			<div class="panel-heading">Control Panel</div>
+			<div class="panel-heading">Youtube Lite Control Panel</div>
 			<div class="panel-body">
 				<button class="btn btn-primary" id="save">Save Settings</button>
 			</div>
@@ -26,20 +34,21 @@
 	</div>
 </div>
 
-<input id="csrf_token" type="hidden" value="{csrf}" />
-
-<script>
-	$('#save').on('click', function() {
-			var data = {
-				_csrf: $('#csrf_token').val(),
-				youtubeAPIKey: $('#youtubeAPIKey').val(),
-			};
-
-			$.post(config.relative_path + '/api/admin/plugins/youtube-lite/save', data, function(data) {
-				app.alertSuccess(data.message);
+<script type="text/javascript">
+	require(['settings'], function(Settings) {
+		Settings.load('youtube-lite', $('.youtube-lite-settings'));
+		$('#save').on('click', function() {
+			Settings.save('youtube-lite', $('.youtube-lite-settings'), function() {
+				app.alert({
+					type: 'success',
+					alert_id: 'youtube-lite-saved',
+					title: 'Reload Required',
+					message: 'Please reload your NodeBB to complete configuration of the Youtube Lite plugin',
+					clickfn: function() {
+						socket.emit('admin.reload');
+					}
+				})
 			});
-
-		return false;
-	});
+		});
 	});
 </script>
