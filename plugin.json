@@ -18,6 +18,6 @@
         "static": "./static"
     },
     "less": [
-		"./styles/style.less"
+		"./static/style.less"
 	]
 }
