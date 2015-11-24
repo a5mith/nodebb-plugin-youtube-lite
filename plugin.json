@@ -13,6 +13,7 @@
 	"staticDirs": {
         "static": "./static"
     },
+	"templates": "./public/templates",
     "less": [
         "static/style.less"
     ],
