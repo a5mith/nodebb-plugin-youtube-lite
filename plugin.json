@@ -8,12 +8,10 @@
         { "hook": "filter:parse.post", "method": "parse"},
 		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation"},
         { "hook": "static:app.load", "method": "init" }		
-		
 	],	
 	"staticDirs": {
         "static": "./static"
     },
-	"templates": "./templates",
     "less": [
         "static/style.less"
     ],
@@ -21,4 +19,6 @@
 		"static/lib/lazyYT.js",
         "static/lib/main.js"
 	]
+	"templates": "./templates",
+
 }
