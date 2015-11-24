@@ -5,8 +5,8 @@
 	"url": "https://github.com/a5mith/nodebb-plugin-youtube-lite",
 	"library": "./library.js",
 	"hooks": [
-        { "hook": "filter:parse.post", "method": "parse"},
-		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation"},
+        { "hook": "filter:parse.post", "method": "parse" },
+		{ "hook": "filter:admin.header.build", "method": "adminBuild" },
         { "hook": "static:app.load", "method": "init" }		
 	],	
 	"staticDirs": {
@@ -18,7 +18,7 @@
     "scripts": [
 		"static/lib/lazyYT.js",
         "static/lib/main.js"
-	]
-	"templates": "./templates",
+	],
+	"templates": "./templates"
 
 }
