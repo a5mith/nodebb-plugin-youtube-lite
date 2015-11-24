@@ -9,16 +9,15 @@
 		{ "hook": "filter:admin.header.build", "method": "adminBuild" },
         { "hook": "static:app.load", "method": "init" }		
 	],	
+	"templates": "./templates",
+	"scripts": [
+		"static/lib/lazyYT.js",
+        "static/lib/main.js"
+	],
 	"staticDirs": {
         "static": "./static"
     },
     "less": [
-        "static/style.less"
-    ],
-    "scripts": [
-		"static/lib/lazyYT.js",
-        "static/lib/main.js"
-	],
-	"templates": "./templates"
-
+		"./styles/style.less"
+	]
 }
