@@ -6,8 +6,6 @@ var YoutubeLite = {},
 
 	var regularUrl = /<a.*?href="((https?:\/\/www\.)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)([a-zA-Z0-9_-]{6,11})".*?<\/a>/g;,
 
-	YoutubeLite = {};
-
 YoutubeLite.init = function(params, callback) {
 	var router = params.router,
 		hostMiddleware = params.middleware,
