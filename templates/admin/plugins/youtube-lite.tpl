@@ -11,12 +11,8 @@
 					<div class="col-sm-6 well">
 						<form class="form youtube-lite-settings">
 							<div class="form-group">
-								<label for="id">Client ID</label>
-								<input type="text" class="form-control" id="id" name="id" />
-							</div>
-							<div class="form-group">
-								<label for="secret">Client Secret</label>
-								<input type="text" class="form-control" id="secret" name="secret" />
+								<label for="id">Youtube API Key</label>
+								<input type="text" class="form-control" name="id" input id="youtubeKey" value="{settings.youtubeKey}/>
 							</div>
 						</form>
 					</div>
@@ -38,6 +34,9 @@
 	require(['settings'], function(Settings) {
 		Settings.load('youtube-lite', $('.youtube-lite-settings'));
 		$('#save').on('click', function() {
+			var data = {
+			youtubeKey: $('#youtubeKey').val()
+		};
 			Settings.save('youtube-lite', $('.youtube-lite-settings'), function() {
 				app.alert({
 					type: 'success',
