@@ -1,5 +1,34 @@
 (function(module) {
 	"use strict";
+	
+		var settings;
+
+	db.getObject('nodebb-plugin-youtube-lite', function(err, _settings) {
+		if (err) {
+			return winston.error(err.message);
+		}
+		settings = _settings || {};
+
+	});
+	youtube-lite.init = function(params, callback) {
+
+		params.router.get('/admin/plugins/youtube-lite', params.middleware.applyCSRF, params.middleware.admin.buildHeader, renderAdmin);
+		params.router.get('/api/admin/plugins/youtube-lite', params.middleware.applyCSRF, renderAdmin);
+
+		params.router.post('/api/admin/plugins/youtube-lite/save', params.middleware.applyCSRF, save);
+
+		params.router.get('/admin/plugins/youtube-lite/oauth', authorize);
+
+		callback();
+	};
+
+	function renderAdmin(req, res, next) {
+		var data = {
+			YoutubeID: settings.YoutubeID,
+			YoutubeSecret: settings.YoutubeSecret,
+		};
+		res.render('admin/plugins/youtube-lite', {settings: data, csrf: req.csrfToken()});
+	}
 
 	var YoutubeLite = {},
 	    embed = '<div class="js-lazyYT" data-youtube-id="$4" data-width="640" data-height="360"><iframe class="lazytube" src="//www.youtube.com/embed/$4"></iframe></div>';
