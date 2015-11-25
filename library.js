@@ -1,16 +1,7 @@
 (function(module) {
 	"use strict";
 	
-		var settings;
-
-	db.getObject('nodebb-plugin-youtube-lite', function(err, _settings) {
-		if (err) {
-			return winston.error(err.message);
-		}
-		settings = _settings || {};
-
-	});
-	youtube-lite.init = function(params, callback) {
+		youtube-lite.init = function(params, callback) {
 
 		params.router.get('/admin/plugins/youtube-lite', params.middleware.applyCSRF, params.middleware.admin.buildHeader, renderAdmin);
 		params.router.get('/api/admin/plugins/youtube-lite', params.middleware.applyCSRF, renderAdmin);
