@@ -14,17 +14,17 @@ YoutubeLite.init = function(params, callback) {
 	// We create two routes for every view. One API call, and the actual route itself.
 	// Just add the buildHeader middleware to your route and NodeBB will take care of everything for you.
 
-	router.get('/admin/plugins/quickstart', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
-	router.get('/api/admin/plugins/quickstart', controllers.renderAdminPage);
+	router.get('/admin/plugins/youtube-lite', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
+	router.get('/api/admin/plugins/youtube-lite', controllers.renderAdminPage);
 
 	callback();
 };
 
-plugin.addAdminNavigation = function(header, callback) {
+YoutubeLite.addAdminNavigation = function(header, callback) {
 	header.plugins.push({
-		route: '/plugins/quickstart',
-		icon: 'fa-tint',
-		name: 'Quickstart'
+		route: '/plugins/youtube-lite',
+		icon: 'fa-youtube',
+		name: 'Youtube Lite'
 	});
 
 	callback(null, header);
