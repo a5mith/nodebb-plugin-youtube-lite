@@ -4,9 +4,11 @@ var controllers = require('./lib/controllers'),
 var YoutubeLite = {},
 	    embed = '<div class="js-lazyYT" data-youtube-id="$4" data-width="640" data-height="360"><iframe class="lazytube" src="//www.youtube.com/embed/$4"></iframe></div>';
 
-var regularUrl = /<a.*?href="((https?:\/\/www\.)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)([a-zA-Z0-9_-]{6,11})".*?<\/a>/g;
+	var regularUrl = /<a.*?href="((https?:\/\/www\.)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)([a-zA-Z0-9_-]{6,11})".*?<\/a>/g;
 
-plugin.init = function(params, callback) {
+	YoutubeLite = {};
+
+YoutubeLite.init = function(params, callback) {
 	var router = params.router,
 		hostMiddleware = params.middleware,
 		hostControllers = params.controllers;
@@ -14,24 +16,23 @@ plugin.init = function(params, callback) {
 	// We create two routes for every view. One API call, and the actual route itself.
 	// Just add the buildHeader middleware to your route and NodeBB will take care of everything for you.
 
-	router.get('/admin/plugins/youtube-lite', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
-	router.get('/api/admin/plugins/youtube-lite', controllers.renderAdminPage);
+	router.get('/admin/plugins/quickstart', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
+	router.get('/api/admin/plugins/quickstart', controllers.renderAdminPage);
 
 	callback();
 };
 
 plugin.addAdminNavigation = function(header, callback) {
 	header.plugins.push({
-		route: '/plugins/youtube-lite',
-		icon: 'fa-youtube',
-		name: 'Youtube Lite'
+		route: '/plugins/quickstart',
+		icon: 'fa-tint',
+		name: 'Quickstart'
 	});
 
 	callback(null, header);
 };
 
-        
-    YoutubeLite.parse = function(data, callback) {
+YoutubeLite.parse = function(data, callback) {
         if (!data || !data.postData || !data.postData.content) {
             return callback(null, data);
         }
