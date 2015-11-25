@@ -6,18 +6,18 @@
 	"library": "./library.js",
 	"hooks": [
         { "hook": "filter:parse.post", "method": "parse" },
-		{ "hook": "filter:admin.header.build", "method": "adminBuild" },
+	{ "hook": "filter:admin.header.build", "method": "adminBuild" },
         { "hook": "static:app.load", "method": "init" }		
 	],	
 	"templates": "./templates",
 	"scripts": [
-		"static/lib/lazyYT.js",
+	"static/lib/lazyYT.js",
         "static/lib/main.js"
 	],
 	"staticDirs": {
         "static": "./static"
     },
     "less": [
-		"./static/style.less"
+	"./static/style.less"
 	]
 }
