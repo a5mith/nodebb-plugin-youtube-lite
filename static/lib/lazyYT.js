@@ -92,11 +92,7 @@
         })
           .html(innerHtml.join(''));
         
-        if (width > 640) {
-            thumb_img = 'maxresdefault.jpg';
-        } else if (width > 480) {
-            thumb_img = 'sddefault.jpg';
-        } else if (width > 320) {
+        if (width > 320) {
             thumb_img = 'hqdefault.jpg';
         } else if (width > 120) {
             thumb_img = 'mqdefault.jpg';
