@@ -12,7 +12,7 @@
 						<form class="form youtube-lite-settings">
 							<div class="form-group">
 								<label for="id">Youtube API Key</label>
-								<input type="text" class="form-control" name="id" input id="youtubeKey" value="{settings.youtubeKey}/>
+								<input type="text" class="form-control" name="id" input id="youtubeKey" value="{settings.youtubeKey}"/>
 							</div>
 						</form>
 					</div>
