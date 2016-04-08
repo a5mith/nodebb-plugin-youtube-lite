@@ -4,7 +4,7 @@ var controllers = require('./lib/controllers');
 var YoutubeLite = {},
 	    embed = '<div class="js-lazyYT" data-youtube-id="$4" data-width="640" data-height="360"><iframe class="lazytube" src="//www.youtube.com/embed/$4"></iframe></div>';
 
-	var regularUrl = /<p><a.*?href="((https?:\/\/www\.)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)([a-zA-Z0-9_-]{6,11})".*?<\/a><\/p>/g;
+	var regularUrl = /(?:<p>|^)<a.*?href="((https?:\/\/www\.)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)([a-zA-Z0-9_-]{6,11})"[^>]*?>\1\4<\/a>(?:<br\/?>|<\/p>)/mg;
 
 YoutubeLite.init = function(params, callback) {
 	var router = params.router,
