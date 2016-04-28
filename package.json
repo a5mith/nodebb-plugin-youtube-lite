@@ -7,11 +7,16 @@
   "description": "NodeBB Youtube Lite Plugin",
   "main": "library.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./tests"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/a5mith/nodebb-plugin-youtube-lite.git"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+	"winston": "^2.2.0"
   },
   "keywords": [
     "nodebb",
