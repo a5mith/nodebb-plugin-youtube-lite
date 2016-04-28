@@ -13,6 +13,7 @@
             innerHtml = [],
             $thumb,
             thumb_img,
+            start = $el.data('start'),
             loading_text = $el.text() ? $el.text() : settings.loading_text,
             youtube_parameters = $el.data('parameters') || '';
         
@@ -109,7 +110,7 @@
             .on('click', function (e) {
                 e.preventDefault();
                 if (!$el.hasClass('lazyYT-video-loaded') && $thumb.hasClass('lazyYT-image-loaded')) {
-                    $el.html('<iframe src="//www.youtube.com/embed/' + id + '?' + youtube_parameters + '&autoplay=1" frameborder="0" allowfullscreen></iframe>')
+                    $el.html('<iframe src="//www.youtube.com/embed/' + id + '?' + youtube_parameters + (start ? '&' + start : '') + '&autoplay=1" frameborder="0" allowfullscreen></iframe>')
                         .addClass(settings.video_loaded_class);
 
                     // execute callback

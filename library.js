@@ -2,9 +2,11 @@
 
 var controllers = require('./lib/controllers');
 var YoutubeLite = {},
-	    embed = '<div class="js-lazyYT" data-youtube-id="$4" data-width="640" data-height="360"><iframe class="lazytube" src="//www.youtube.com/embed/$4"></iframe></div>';
+	    embed = '<div class="js-lazyYT" data-youtube-id="$5" data-width="640" data-height="360" data-start="$7"><iframe class="lazytube" src="//www.youtube.com/embed/$5$6$7"></iframe></div>',
+		timeStamp = /t(\=\d+)/g,
+		startParam = /&start=/g;
 
-var regularUrl = /(?:<p>|^)<a.*?href="((https?:\/\/www\.)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)([a-zA-Z0-9_-]{6,11})"[^>]*?>\1\4<\/a>(?:<br\/?>|<\/p>)/mg;
+	var regularUrl = /(?:<p>|^)<a.*?href="((https?:\/\/(?:www\.)?)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)(([a-zA-Z0-9_-]{6,11})(?:([&\?])(t\=\d+)s)?)"[^>]*?>\1\4<\/a>(?:<br\/?>|<\/p>)/gm;
 YoutubeLite.regularUrl = regularUrl;
 
 YoutubeLite.init = function(params, callback) {
@@ -35,11 +37,12 @@ YoutubeLite.parse = function(data, callback) {
         if (!data || !data.postData || !data.postData.content) {
             return callback(null, data);
         }
-        if (data.postData.content.match(regularUrl)) {	
+        if (data.postData.content.match(regularUrl)) {
             data.postData.content = data.postData.content.replace(regularUrl, embed);
+            data.postData.content = data.postData.content.replace(timeStamp, 'start$1');
+            data.postData.content = data.postData.content.replace(startParam, '?start=');
         }
         callback(null, data);
-
     };
 
 module.exports = YoutubeLite;
