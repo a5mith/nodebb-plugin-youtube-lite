@@ -64,7 +64,7 @@ function fetchSnippet( videoId, callback ){
                     videos = JSON.parse(videos);
                     var snippet = videos.items[0].snippet;
                     snippet.title = replaceAll( snippet.title, '<', '&lt;');
-                    snippet.channelTitle = replaceAll( snippet.title, '<', '&lt;');
+                    snippet.channelTitle = replaceAll( snippet.channelTitle, '<', '&lt;');
                     snippet.duration = timeToString( parseDuration( videos.items[0].contentDetails.duration ) );
                     cache.set( videoId, snippet );
                     callback( null, snippet );
