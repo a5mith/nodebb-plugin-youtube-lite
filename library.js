@@ -62,6 +62,9 @@ function fetchSnippet( videoId, callback ){
                 });
                 res.on('end', function(){
                     videos = JSON.parse(videos);
+                    if( !videos.items || videos.items.length == 0 ){
+                        return callback(null, null);
+                    }
                     var snippet = videos.items[0].snippet;
                     snippet.title = replaceAll( snippet.title, '<', '&lt;');
                     snippet.channelTitle = replaceAll( snippet.channelTitle, '<', '&lt;');
@@ -172,6 +175,10 @@ function filter(data, match, preview, callback){
             function(err, snippet){
                 if( err ){
                     callback(err);
+                }
+                if( !snippet ){
+                    // not a valid video, skip it
+                    return callback(null, data);
                 }
                
                 var params = getParams( (match[9] || '').split('&amp;') );
