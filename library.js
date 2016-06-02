@@ -6,9 +6,8 @@ var LRU = require('lru-cache'),
 var https = require('https');
 var controllers = require('./lib/controllers');
 
-var apiKey;
-
 var YoutubeLite = {};
+YoutubeLite.apiKey = null;
 YoutubeLite.cache = cache;
 
 YoutubeLite.youtubeUrl = /(<p>|^)((<a.*?href="((https?:\/\/(?:www\.)?)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)(([a-zA-Z0-9_-]{6,11})(?:(?:[&\?])([^"]+))?)"[^>]*?>)(\4\7)<\/a>)(<br\/?>|<\/p>)/m;
@@ -25,7 +24,7 @@ YoutubeLite.init = function(params, callback) {
     router.get('/api/admin/plugins/youtube-lite', controllers.renderAdminPage);
     
     db.getObjectField('settings:youtube-lite', 'id', function(err, result){
-        apiKey = result;
+        YoutubeLite.apiKey = result;
         callback();
     });
 };
@@ -40,43 +39,50 @@ YoutubeLite.addAdminNavigation = function(header, callback) {
     callback(null, header);
 };
 
-function fetchSnippet( videoId, callback ){
+YoutubeLite.apiRequest = function( videoId, callback ){
+    var req = https.request({
+        host: 'www.googleapis.com',
+        path: '/youtube/v3/videos?id=' + videoId + '&key=' + YoutubeLite.apiKey + '&part=snippet,contentDetails&fields=items(snippet(title,channelTitle,thumbnails),contentDetails(duration))',
+        port: 443,
+        agent: false,
+        json: true,
+        method: 'GET'
+    },(res) => {
+        res.setEncoding('utf8');
+        var videos = '';
+        res.on('data', (data) => { 
+            videos += data;
+        });
+        res.on('end', function(){
+            callback(null, videos);
+        });
+    });
+    req.end();
+    
+    req.on('error', (err) => { 
+        callback( error );
+    });
+}
+
+YoutubeLite.fetchSnippet = function( videoId, callback ){
     var cachedSnippet = cache.get(videoId);
     if( cachedSnippet ){
         return callback(null, cachedSnippet);
     }
     else{
-        if( apiKey ){
-            var req = https.request({
-                host: 'www.googleapis.com',
-                path: '/youtube/v3/videos?id=' + videoId + '&key=' + apiKey + '&part=snippet,contentDetails&fields=items(snippet(title,channelTitle,thumbnails),contentDetails(duration))',
-                port: 443,
-                agent: false,
-                json: true,
-                method: 'GET'
-            },(res) => {
-                res.setEncoding('utf8');
-                var videos = '';
-                res.on('data', (data) => { 
-                    videos += data;
-                });
-                res.on('end', function(){
-                    videos = JSON.parse(videos);
-                    if( !videos.items || videos.items.length == 0 ){
-                        return callback(null, null);
-                    }
-                    var snippet = videos.items[0].snippet;
-                    snippet.title = replaceAll( snippet.title, '<', '&lt;');
-                    snippet.channelTitle = replaceAll( snippet.channelTitle, '<', '&lt;');
-                    snippet.duration = timeToString( parseDuration( videos.items[0].contentDetails.duration ) );
-                    cache.set( videoId, snippet );
-                    callback( null, snippet );
-                });
-            });
-            req.end();
-            
-            req.on('error', (err) => { 
-                callback( error );
+        if( YoutubeLite.apiKey ){
+            return YoutubeLite.apiRequest( videoId, function(err, videos){
+                videos = JSON.parse(videos);
+                if( !videos.items || videos.items.length == 0 ){
+                    cache.set( videoId, null );
+                    return callback(null, null);
+                }
+                var snippet = videos.items[0].snippet;
+                snippet.title = replaceAll( snippet.title, '<', '&lt;');
+                snippet.channelTitle = replaceAll( snippet.channelTitle, '<', '&lt;');
+                snippet.duration = timeToString( parseDuration( videos.items[0].contentDetails.duration ) );
+                cache.set( videoId, snippet );
+                callback( null, snippet );
             });
         }
         else{
@@ -164,14 +170,11 @@ function getParams( params ){
     return result;
 }
 
-function getStart( params ){
-    
-}
 
 function filter(data, match, preview, callback){
 	if(match){
         var videoId = match[8];
-        fetchSnippet(videoId,
+        YoutubeLite.fetchSnippet(videoId,
             function(err, snippet){
                 if( err ){
                     callback(err);
