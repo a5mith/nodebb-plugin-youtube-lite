@@ -10,7 +10,7 @@ var YoutubeLite = {};
 YoutubeLite.apiKey = null;
 YoutubeLite.cache = cache;
 
-YoutubeLite.youtubeUrl = /(<p>|^)((<a.*?href="((https?:\/\/(?:www\.)?)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)(([a-zA-Z0-9_-]{6,11})(?:(?:[&\?])([^"]+))?)"[^>]*?>)(\4\7)<\/a>)(<br\/?>|<\/p>)/m;
+YoutubeLite.youtubeUrl = /(<p>|^)((<a.*?href="((https?:\/\/(?:www\.)?)?youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|(https?:\/\/)?youtu\.be\/)(([a-zA-Z0-9_-]{6,11})(?:(?:[&\?#])([^"]+))?)"[^>]*?>)(\4\7)<\/a>)(<br\/?>|<\/p>)/m;
 
 YoutubeLite.init = function(params, callback) {
     var router = params.router,
