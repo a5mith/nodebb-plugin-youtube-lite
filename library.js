@@ -59,7 +59,7 @@ YoutubeLite.apiRequest = function( videoId, callback ){
     });
     req.end();
     
-    req.on('error', (err) => { 
+    req.on('error', (err) => {
         callback( err );
     });
 }
@@ -72,6 +72,9 @@ YoutubeLite.fetchSnippet = function( videoId, callback ){
     else{
         if( YoutubeLite.apiKey ){
             return YoutubeLite.apiRequest( videoId, function(err, videos){
+                if( err ){
+                    callback(err);
+                }
                 videos = JSON.parse(videos);
                 if( !videos.items || videos.items.length == 0 ){
                     cache.set( videoId, null );
