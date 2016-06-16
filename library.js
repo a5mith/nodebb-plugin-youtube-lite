@@ -60,7 +60,7 @@ YoutubeLite.apiRequest = function( videoId, callback ){
     req.end();
     
     req.on('error', (err) => { 
-        callback( error );
+        callback( err );
     });
 }
 
