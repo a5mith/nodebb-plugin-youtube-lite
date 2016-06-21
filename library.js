@@ -5,6 +5,7 @@ var LRU = require('lru-cache'),
     cache = LRU( 500 );
 var https = require('https');
 var controllers = require('./lib/controllers');
+var winston = require('winston');
 
 var YoutubeLite = {};
 YoutubeLite.apiKey = null;
@@ -60,6 +61,8 @@ YoutubeLite.apiRequest = function( videoId, callback ){
     req.end();
     
     req.on('error', (err) => {
+        winston.error('[youtube-lite] error looking up video id: [' + videoId + ']' );
+        winston.error( err );
         callback( err );
     });
 }
@@ -73,7 +76,7 @@ YoutubeLite.fetchSnippet = function( videoId, callback ){
         if( YoutubeLite.apiKey ){
             return YoutubeLite.apiRequest( videoId, function(err, videos){
                 if( err ){
-                    callback(err);
+                    return callback(err);
                 }
                 videos = JSON.parse(videos);
                 if( !videos.items || videos.items.length == 0 ){
@@ -180,7 +183,7 @@ function filter(data, match, preview, callback){
         YoutubeLite.fetchSnippet(videoId,
             function(err, snippet){
                 if( err ){
-                    callback(err);
+                    return callback(err);
                 }
                 if( !snippet ){
                     // not a valid video, skip it
@@ -298,7 +301,7 @@ YoutubeLite.parseRaw = function(data, callback){
         return callback(null, data);
     }
     filter(data, data.match(YoutubeLite.youtubeUrl), true, callback);
-}
+};
 
 YoutubeLite.parsePost = function(data, callback) {
     if (!data || !data.postData || !data.postData.content) {
@@ -306,6 +309,10 @@ YoutubeLite.parsePost = function(data, callback) {
     }
     var content = data.postData.content;
     filter(content, content.match(YoutubeLite.youtubeUrl), false, function(err, content){
+        if(err){
+            winston.error('[youtube-lite] error parsing pid ' + data.postData.pid );
+            return callback(null, data);
+        }
         data.postData.content = content;
         callback(null, data);
     });
