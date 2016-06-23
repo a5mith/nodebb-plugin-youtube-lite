@@ -10,6 +10,14 @@ Youtube Lite allows you to lazyload youtube videos into your NodeBB Forum with n
 
 
 ##Changes in V3
+    0.6.0
+     - Works with NodeBB 1.0
+     - Moved most of the work to the server, to include API calls (keeps API key
+       from being exposed to users).
+     - LRU cache to reduce quota usage.
+     - Supports `t=`, '`start=`', `end=` query string parameters
+     - With valid API key displays title, channel and duration information
+     - Support `#` in query strings
 	0.5.0
 	 - Plugin now supports [Youtube API v3](https://developers.google.com/youtube/v3/?hl=en)
 	
